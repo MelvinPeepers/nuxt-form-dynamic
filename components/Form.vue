@@ -53,7 +53,7 @@
 </template>
 
 <style>
-@import url("/components/styling.css")
+@import url("~/assets/styling.css");
 </style>
 
 <script>
