@@ -11,7 +11,6 @@
   name="contact" 
   method="POST" 
   data-netlify="true"
-  action="thank you"
   >
 
     <div class="row">
@@ -58,6 +57,34 @@
 
 <script>
 export default {
-  name: 'NuxtForm'
+  name: 'NuxtForm',
+  methods: {
+    handleSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+
+        // Serialize form data
+        const formData = new FormData(form);
+
+        // Send the form to Netlify
+        fetch("/", {
+            method: "POST",
+            body: FormData,
+        })
+            .then(() => {
+                alert("Form submitted successfully!");
+                // Handle any other success actions or redirects here
+            })
+            .catch((error) => {
+                console.error("Error submitting the form:", error);
+                // Handle error cases here
+            });
+    },
+  },
+  mounted() {
+    // Attach the form submission event listener
+    const form = document.querySelector("form[name='contact']");
+    form.removeEventListener(submit, this.handleSubmit);
+  }
 }
 </script>
