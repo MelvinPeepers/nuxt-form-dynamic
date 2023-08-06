@@ -52,6 +52,10 @@
 
 </template>
 
+<style>
+@import url("/components/styling.css")
+</style>
+
 <script>
 export default {
   name: 'NuxtForm'
