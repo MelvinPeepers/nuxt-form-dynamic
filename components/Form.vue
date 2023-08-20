@@ -12,6 +12,7 @@
             method="POST" 
             data-netlify="true"
             action="thank you"
+            @submit.prevent="handleSubmit"
         >
 
             <input type="hidden" name="form-name" value="contact" />
