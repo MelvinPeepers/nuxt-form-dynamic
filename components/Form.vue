@@ -11,6 +11,7 @@
             name="contact" 
             method="POST" 
             data-netlify="true"
+            action="thank you"
         >
 
             <input type="hidden" name="form-name" value="contact" />
@@ -68,10 +69,6 @@ const handleSubmit = (event) => {
 
     // Serialize form data
     const formData = new FormData(form);
-
-    // Debug: Log FormData
-    console.log([...formData]);
-
 
     // Send the form data to Netlify
     fetch("/", {
