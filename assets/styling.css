@@ -92,8 +92,13 @@ textarea {
 
 textarea:focus,
 input:focus {
-   outline: none;
-   border-color: #86f3df; 
+    outline: none;
+    border-color: #86f3df; 
+}
+
+.vertical-center {
+    text-align: center;
+    margin: 0 auto;
 }
 
 button {
@@ -102,5 +107,4 @@ button {
     background: #86f3df;
     font-size: 16px;
     border-radius: 4px;
-    margin: 0 auto;
 }

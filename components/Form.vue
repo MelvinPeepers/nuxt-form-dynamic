@@ -43,7 +43,9 @@
                 </div>
             </div>
 
-            <button type="submit">Submit</button>
+            <div class="vertical-center">
+                <button type="submit">Submit</button>
+            </div>
 
         </form>
 
@@ -55,36 +57,72 @@
 @import url("~/assets/styling.css");
 </style>
 
-<script>
-export default {
-    name: 'NuxtForm',
-    methods: {
-        handleSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
+<script setup>
+import {onMounted, onUnmounted } from 'vue';
 
-        // Serialize form data
-        const formData = new FormData(form);
+const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
 
-        // Send the form to Netlify
-        fetch("/", {
-            method: "POST",
-            body: FormData,
+    // Serialize form data
+    const formData = new FormData(form);
+
+    // Send the form data to Netlify
+    fetch("/", {
+        method: "POST",
+        body: formData,
+    })
+        .this(() => {
+            alert("Form submitted successfully!");
+            // Handle any other success actions or redirects here
         })
-            .then(() => {
-                alert("Form submitted successfully!");
-                // Handle any other success actions or redirects here
-            })
-            .catch((error) => {
-                console.error("Error submitting the form:", error);
-                // Handle error cases here
-            });
-        },
-    },
-    mounted() {
-        // Attach the form submission event listener
-        const form = document.querySelector("form[name='contact']");
-        form.removeEventListener(submit, this.handleSubmit);
-    }
-}
+        .catch((error) => {
+            console.error("Error submitting the form:", error);
+            // Handle error cases here
+        });
+};
+
+onMounted(() => {
+    // Attach the form submission event listener
+    const form = document.querySelector("form[name='contact']");
+    form.addEventListener("submit", handleSubmit);
+});
+
+onUnmounted(() => {
+    // Remove the form submission event listener to avoid memory leaks
+    const form = document.querySelector("form[name='contact']");
+    form.removeEventListener("submit", handleSubmit);
+});
+
+// export default {
+//     name: 'NuxtForm',
+//     methods: {
+//         handleSubmit(event) {
+//             event.preventDefault();
+//             const form = event.target;
+
+//         // Serialize form data
+//         const formData = new FormData(form);
+
+//         // Send the form to Netlify
+//         fetch("/", {
+//             method: "POST",
+//             body: FormData,
+//         })
+//             .then(() => {
+//                 alert("Form submitted successfully!");
+//                 // Handle any other success actions or redirects here
+//             })
+//             .catch((error) => {
+//                 console.error("Error submitting the form:", error);
+//                 // Handle error cases here
+//             });
+//         },
+//     },
+//     mounted() {
+//         // Attach the form submission event listener
+//         const form = document.querySelector("form[name='contact']");
+//         form.removeEventListener(submit, this.handleSubmit);
+//     }
+// }
 </script>
