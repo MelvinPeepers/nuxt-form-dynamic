@@ -13,16 +13,18 @@
             data-netlify="true"
         >
 
+            <input type="hidden" name="form-name" value="contact" />
+
             <div class="row">
 
                 <div class="column">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Full name here">
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Full name here">
                 </div>
 
                 <div class="column">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email">
+                    <input type="email" name="email" placeholder="Email">
                 </div>
 
             </div>
@@ -30,16 +32,16 @@
             <div class="row">
 
                 <div class="column">
-                    <label for="subject">Title</label>
-                    <input type="text" id="title" name="title" placeholder="Title of message">
+                    <label>Title</label>
+                    <input type="text" name="title" placeholder="Title of message">
                 </div>
 
             </div>
 
             <div class="row">
                 <div class="column">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Leave your message here"></textarea>
+                    <label>Message</label>
+                    <textarea name="message" placeholder="Leave your message here"></textarea>
                 </div>
             </div>
 
@@ -66,6 +68,9 @@ const handleSubmit = (event) => {
 
     // Serialize form data
     const formData = new FormData(form);
+    // After creating formData
+    console.log([...formData]);
+
 
     // Send the form data to Netlify
     fetch("/", {
