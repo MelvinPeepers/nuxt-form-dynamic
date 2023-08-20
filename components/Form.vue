@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <h1>Netlify Forms on Nuxt 3</h1>
+        <h1>Netlify Forms on Nuxt 2</h1>
 
         <h2>Contact Form</h2>
 
