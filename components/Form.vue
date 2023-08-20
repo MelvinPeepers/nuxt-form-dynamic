@@ -60,7 +60,7 @@
 </style>
 
 <script setup>
-import {onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,7 +68,8 @@ const handleSubmit = (event) => {
 
     // Serialize form data
     const formData = new FormData(form);
-    // After creating formData
+
+    // Debug: Log FormData
     console.log([...formData]);
 
 
@@ -77,7 +78,7 @@ const handleSubmit = (event) => {
         method: "POST",
         body: formData,
     })
-        .this(() => {
+        .then(() => {
             alert("Form submitted successfully!");
             // Handle any other success actions or redirects here
         })
